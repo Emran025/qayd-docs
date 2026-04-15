@@ -1,41 +1,40 @@
-# Website
+# وثائق نظام قيد (Qayd Documentation)
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+هذا المستودع يضم دليل المستخدم الشامل والكامل لـ **نظام قيد (Qayd)**. وهو مبني ومُوَّلد باستخدام محرك [Docusaurus](https://docusaurus.io/) فائق السرعة لتوفير أفضل تجربة تصفح للمستخدم ومواءمة مثالية ومدمجة للغة العربية (RTL Mode).
 
-## Installation
+## 🚀 المعاينة المباشرة
 
+يتم نشر الموقع وتحديث التوثيق بشكل آلي مباشرةً عند رفع أي تعديلات عبر مسارات عمل GitHub (GitHub Actions).
+**[تصفح التوثيق المباشر من هنا](https://Emran025.github.io/qayd-docs/)**
+
+---
+
+## 🛠️ التطوير المحلي وإضافة الميزات
+
+إذا كنت تريد المساهمة بتعديل التوثيق أو إضافة مقالات وأدلة جديدة ومُعاينتها بشكل حيّ على جهازك، يمكنك اتباع الخطوات المباشرة التالية:
+
+### المتطلبات المسبقة
+يجب أن يكون لديك مُحرك `Node.js` مثبتاً سلفاً في بيئة العمل الخاصة بك.
+
+### 1. تثبيت الاعتماديات
+قم بفتح الطرفية (Terminal) داخل هذا المجلد وقم بتحميل حزم النظام المطلوبة:
 ```bash
-yarn
+npm install
 ```
 
-## Local Development
-
+### 2. بيئة التطوير المحلية (Local Development)
+لتشغيل بيئة حية تتحدث فورياً وبشكل تلقائي بمجرد حفظ أي ملف:
 ```bash
-yarn start
+npm run start
 ```
+سيقوم هذا بفتح متصفحك الافتراضي تلقائياً على خادم محلي، لترى التوثيق أمامك.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
+### 3. بناء النسخة الإنتاجية (Build Production)
+إذا رغبت في إنشاء حزمة مجمعة ومضغوطة من الموقع بالكامل:
 ```bash
-yarn build
+npm run build
 ```
+هذا الإجراء سيولد مجلداً يسمى `build`، جاهزاً للرفع أو النقر على النشر المباشر.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+---
+**نظام قيد** — السيادة المالية الحقيقية تبدأ بمعرفة كيف يفكر نظامك.
