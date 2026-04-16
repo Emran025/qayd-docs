@@ -1,5 +1,9 @@
 import React, { useState, useRef } from 'react';
 import initSqlJs from 'sql.js';
+import { 
+  Database, Banknote, FolderTree, ArrowRightLeft, WifiOff, Users, 
+  FileText, Download, CheckCircle, ChevronDown, ChevronRight 
+} from 'lucide-react';
 import styles from './styles.module.css';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -504,26 +508,26 @@ const MigrationTool: React.FC = () => {
               className={styles.hiddenInput}
               id="db-file-upload"
             />
-            <div className={styles.dropIcon}>🗄️</div>
+            <div className={styles.dropIcon}><Database size={48} /></div>
             <p className={styles.dropText}>{isDragging ? 'أفلت الملف هنا...' : 'اسحب الملف هنا أو انقر للاختيار'}</p>
             <span className={styles.dropHint}>.db&nbsp;&nbsp;.sqlite&nbsp;&nbsp;.sqlite3</span>
           </div>
 
           <div className={styles.featureGrid}>
             <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>💱</span>
+              <span className={styles.featureIcon}><Banknote size={24} /></span>
               <span>تحويل ذكي للعملات<br /><small>سعودي → SAR، محلي → YER...</small></span>
             </div>
             <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>🗂️</span>
+              <span className={styles.featureIcon}><FolderTree size={24} /></span>
               <span>استيراد المجموعات<br /><small>مع الحفاظ على التصنيف</small></span>
             </div>
             <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>🔀</span>
+              <span className={styles.featureIcon}><ArrowRightLeft size={24} /></span>
               <span>حركات التحويل<br /><small>بين الحسابات (t_cus_id)</small></span>
             </div>
             <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>🔒</span>
+              <span className={styles.featureIcon}><WifiOff size={24} /></span>
               <span>معالجة دون إنترنت<br /><small>بياناتك تبقى على جهازك</small></span>
             </div>
           </div>
@@ -553,22 +557,22 @@ const MigrationTool: React.FC = () => {
           {/* Stats */}
           <div className={styles.statsRow}>
             <div className={styles.statCard}>
-              <div className={styles.statEmoji}>👤</div>
+              <div className={styles.statEmoji}><Users size={28} /></div>
               <div className={styles.statNum}>{bundle.stats.accountsCount}</div>
               <div className={styles.statLbl}>حساب</div>
             </div>
             <div className={styles.statCard}>
-              <div className={styles.statEmoji}>📑</div>
+              <div className={styles.statEmoji}><FileText size={28} /></div>
               <div className={styles.statNum}>{bundle.stats.transactionsCount}</div>
               <div className={styles.statLbl}>حركة مالية</div>
             </div>
             <div className={styles.statCard}>
-              <div className={styles.statEmoji}>💱</div>
+              <div className={styles.statEmoji}><Banknote size={28} /></div>
               <div className={styles.statNum}>{bundle.stats.currenciesCount}</div>
               <div className={styles.statLbl}>عملة</div>
             </div>
             <div className={styles.statCard}>
-              <div className={styles.statEmoji}>🔀</div>
+              <div className={styles.statEmoji}><ArrowRightLeft size={28} /></div>
               <div className={styles.statNum}>{bundle.stats.transfersCount}</div>
               <div className={styles.statLbl}>تحويل</div>
             </div>
@@ -576,7 +580,9 @@ const MigrationTool: React.FC = () => {
 
           {/* Currency Map */}
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>💱 خريطة تحويل العملات</h3>
+            <h3 className={styles.sectionTitle} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Banknote size={20} /> خريطة تحويل العملات
+            </h3>
             <div className={styles.currTable}>
               <div className={styles.currHeader}>
                 <span>الاسم الأصلي</span>
@@ -597,7 +603,9 @@ const MigrationTool: React.FC = () => {
 
           {/* Accounts by Group */}
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>👤 الحسابات — مُجمَّعة حسب الفئة</h3>
+            <h3 className={styles.sectionTitle} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Users size={20} /> الحسابات — مُجمَّعة حسب الفئة
+            </h3>
             {(() => {
               const grouped: Record<string, AccountRecord[]> = {};
               for (const acc of bundle.accounts) {
@@ -612,7 +620,7 @@ const MigrationTool: React.FC = () => {
                     onClick={() => toggleGroup(gName)}
                     id={`group-${gName.replace(/\s/g, '_')}`}
                   >
-                    <span className={styles.groupCaret}>{expandedGroups.has(gName) ? '▾' : '▸'}</span>
+                    <span className={styles.groupCaret}>{expandedGroups.has(gName) ? <ChevronDown size={18} /> : <ChevronRight size={18} />}</span>
                     <span className={styles.groupName}>{gName}</span>
                     <span className={styles.groupPill}>{accs.length}</span>
                   </button>
@@ -652,8 +660,8 @@ const MigrationTool: React.FC = () => {
 
           {/* Download */}
           <div className={styles.downloadSection}>
-            <button id="download-bundle-btn" onClick={downloadJson} className={styles.dlButton}>
-              <span>⬇️</span>&nbsp; تحميل حزمة التحويل&nbsp;(JSON v2.0)
+            <button id="download-bundle-btn" onClick={downloadJson} className={styles.dlButton} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <Download size={18} /> <span>تحميل حزمة التحويل (JSON v2.0)</span>
             </button>
             <p className={styles.dlHint}>
               افتح تطبيق قيد ← الإعدادات ← استيراد بيانات ← اختر هذا الملف
@@ -665,7 +673,7 @@ const MigrationTool: React.FC = () => {
       {/* ══ PHASE: Done ═══════════════════════════════════════════════════════ */}
       {phase === 'done' && (
         <div className={styles.card}>
-          <div className={styles.successIcon}>✅</div>
+          <div className={styles.successIcon}><CheckCircle size={64} color="#059669" /></div>
           <h2 className={styles.cardTitle}>تم تحميل حزمة التحويل بنجاح!</h2>
           <p className={styles.cardDesc}>الخطوات التالية في تطبيق قيد على هاتفك:</p>
           <ol className={styles.nextList}>
